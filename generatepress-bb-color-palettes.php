@@ -3,7 +3,7 @@
  * Plugin Name:       GeneratePress Beaver Builder Color Palette Compatibility
  * Plugin URI:        https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes 
  * Description:       A custom plugin to add Beaver Builder color compatibility for the GeneratePress Global Color Palette.
- * Version:           0.0.2
+ * Version:           0.0.3
  * Primary Branch:    main
  * GitHub Plugin URI: https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes
  * Author:            Weave Digital Studio
@@ -15,12 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
+// Check if the active theme is GeneratePress.
+if ( ! function_exists( 'generate_get_global_colors' ) ) {
+    add_action( 'admin_notices', function() {
+        echo '<div class="notice notice-error"><p><strong>GeneratePress Beaver Builder Color Palette Compatibility:</strong> This plugin requires the GeneratePress theme to be active. Please activate GeneratePress to use this plugin.</p></div>';
+    } );
+    return; // Exit if GeneratePress is not active.
+}
+
 /**
  * Generates custom CSS for global color variables compatible with Beaver Builder.
  *
  * This function generates CSS variables for the GeneratePress global colors with the prefix
  * `--wp--preset--color--` and returns the CSS as a string, allowing Beaver Builder
- * to recognize and utilise GeneratePress global colors.
+ * to recognize and utilize GeneratePress global colors.
  *
  * @param array $global_colors Array of global color data (slug and color values).
  * @return string Generated CSS for the global colors.
