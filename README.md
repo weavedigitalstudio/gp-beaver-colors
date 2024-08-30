@@ -4,4 +4,9 @@ A custom plugin to add Beaver Builder color compatibility for the GeneratePress 
 
 Adds the correct prefix '--wp--preset--color--' to the GeneratePress Global Colors so they are usable in Beaver Builder.
 
-You can now set you Global Colors in Generate Press and not have to re-set them up in Beaver Builder using their css variables as well.
+If you have the Global Inline styles removed from WordPress as you are not using a FSE or Block theme you can use this plugin which adds the correct css varibale prefix to the Generate Press theme GLobal Colours in order for them to be picked up and work with Beave Builder.
+
+You do not need to set a Global Colour Palette in Beaver Builder also.
+
+We remove the Global Inline styles for performance reason as we do not currently use them.
+https://perfmatters.io/docs/remove-global-inline-styles-wordpress/
