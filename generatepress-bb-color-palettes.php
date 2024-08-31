@@ -3,7 +3,7 @@
  * Plugin Name:       GeneratePress Beaver Builder Color Palette Compatibility
  * Plugin URI:        https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes 
  * Description:       A custom plugin to add Beaver Builder color compatibility for the GeneratePress Global Color Palette.
- * Version:           0.0.3
+ * Version:           0.0.4
  * Primary Branch:    main
  * GitHub Plugin URI: https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes
  * Author:            Weave Digital Studio
@@ -15,12 +15,20 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-// Check if the active theme is GeneratePress.
-if ( ! function_exists( 'generate_get_global_colors' ) ) {
-    add_action( 'admin_notices', function() {
-        echo '<div class="notice notice-error"><p><strong>GeneratePress Beaver Builder Color Palette Compatibility:</strong> This plugin requires the GeneratePress theme to be active. Please activate GeneratePress to use this plugin.</p></div>';
-    } );
-    return; // Exit if GeneratePress is not active.
+/**
+ * Check if the active theme is GeneratePress or a child theme of GeneratePress.
+ *
+ * @return bool True if GeneratePress or a child theme of GeneratePress is active, false otherwise.
+ */
+function is_generatepress_active() {
+    $theme = wp_get_theme();
+
+    // Check if the current theme is GeneratePress or if it is a child theme of GeneratePress.
+    if ( 'GeneratePress' === $theme->get( 'Name' ) || 'GeneratePress' === $theme->get( 'Template' ) ) {
+        return true;
+    }
+
+    return false;
 }
 
 /**
@@ -28,7 +36,7 @@ if ( ! function_exists( 'generate_get_global_colors' ) ) {
  *
  * This function generates CSS variables for the GeneratePress global colors with the prefix
  * `--wp--preset--color--` and returns the CSS as a string, allowing Beaver Builder
- * to recognize and utilize GeneratePress global colors.
+ * to recognize and utilise GeneratePress global colors.
  *
  * @param array $global_colors Array of global color data (slug and color values).
  * @return string Generated CSS for the global colors.
@@ -61,6 +69,11 @@ function generate_custom_global_colors_css( $global_colors ) {
  * and enqueues the CSS as inline styles, making the colors available in Beaver Builder.
  */
 function generate_enqueue_custom_inline_styles() {
+    // Check if GeneratePress is active
+    if ( ! is_generatepress_active() ) {
+        return; // Exit early if GeneratePress is not the active theme
+    }
+
     // Get the global colors defined by GeneratePress
     $global_colors = generate_get_global_colors();
 
@@ -70,5 +83,6 @@ function generate_enqueue_custom_inline_styles() {
     // Add the custom CSS as inline styles, attached to the 'generate-style' handle
     wp_add_inline_style( 'generate-style', $custom_global_colors_css );
 }
+
 // Hook the function to enqueue custom styles after the theme styles are loaded
 add_action( 'wp_enqueue_scripts', 'generate_enqueue_custom_inline_styles', 20 );
