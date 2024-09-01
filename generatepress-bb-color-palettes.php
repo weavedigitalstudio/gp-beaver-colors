@@ -24,7 +24,7 @@ function is_generatepress_active() {
     $theme = wp_get_theme();
 
     // Check if the current theme is GeneratePress or if it is a child theme of GeneratePress.
-    if ( 'GeneratePress' === $theme->get( 'Name' ) || 'GeneratePress' === $theme->get( 'Template' ) ) {
+    if ( 'GeneratePress' === $theme->get( 'Name' ) || 'generatepress' === $theme->get( 'Template' ) ) {
         return true;
     }
 
