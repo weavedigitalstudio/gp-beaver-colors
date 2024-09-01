@@ -3,7 +3,7 @@
  * Plugin Name:       GeneratePress Beaver Builder Color Palette Compatibility
  * Plugin URI:        https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes 
  * Description:       A custom plugin to add Beaver Builder color compatibility for the GeneratePress Global Color Palette.
- * Version:           0.0.4
+ * Version:           0.0.5
  * Primary Branch:    main
  * GitHub Plugin URI: https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes
  * Author:            Weave Digital Studio
