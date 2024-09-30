@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       GeneratePress Beaver Builder Color Palette Compatibility
+ * Plugin Name:       GenPress global colour palette for Beaver Builder colour picker
  * Plugin URI:        https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes 
- * Description:       A custom plugin to add Beaver Builder color compatibility for the GeneratePress Global Color Palette.
- * Version:           0.0.5
+ * Description:       A custom plugin to add Beaver Builder color picker compatibility for the GeneratePress Global Color Palette.
+ * Version:           0.1.0
  * Primary Branch:    main
- * GitHub Plugin URI: https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes
+ * GitHub Plugin URI: weavedigitalstudio/GeneratePress-BB-Color-Palettes
  * Author:            Weave Digital Studio
  * License:           MIT
  */
@@ -24,7 +24,7 @@ function is_generatepress_active() {
     $theme = wp_get_theme();
 
     // Check if the current theme is GeneratePress or if it is a child theme of GeneratePress.
-    if ( 'GeneratePress' === $theme->get( 'Name' ) || 'generatepress' === $theme->get( 'Template' ) ) {
+    if ( 'GeneratePress' === $theme->get( 'Name' ) || 'generatepress' === $theme->get_template() ) {
         return true;
     }
 
@@ -48,10 +48,12 @@ function generate_custom_global_colors_css( $global_colors ) {
 
     // Check if there are any global colors to process
     if ( ! empty( $global_colors ) ) {
+        $css_variables = array();
         foreach ( (array) $global_colors as $key => $data ) {
             // Add each color as a CSS variable with the custom prefix for Beaver Builder
-            $custom_css .= '--wp--preset--color--' . $data['slug'] . ':' . $data['color'] . ';';
+            $css_variables[] = '--wp--preset--color--' . $data['slug'] . ':' . $data['color'] . ';';
         }
+        $custom_css .= implode( "\n", $css_variables );
     }
 
     // Close the root selector
@@ -80,8 +82,11 @@ function generate_enqueue_custom_inline_styles() {
     // Generate the custom global colors CSS for Beaver Builder
     $custom_global_colors_css = generate_custom_global_colors_css( $global_colors );
 
-    // Add the custom CSS as inline styles, attached to the 'generate-style' handle
-    wp_add_inline_style( 'generate-style', $custom_global_colors_css );
+    // Check if the 'generate-style' handle exists
+    if ( wp_style_is( 'generate-style', 'enqueued' ) ) {
+        // Add the custom CSS as inline styles, attached to the 'generate-style' handle
+        wp_add_inline_style( 'generate-style', $custom_global_colors_css );
+    }
 }
 
 // Hook the function to enqueue custom styles after the theme styles are loaded
