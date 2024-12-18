@@ -3,7 +3,7 @@
  * Plugin Name:       GeneratePress Global Colour Palette for Beaver Builder
  * Plugin URI:        https://github.com/weavedigitalstudio/GeneratePress-BB-Color-Palettes 
  * Description:       A custom plugin to add Beaver Builder color picker compatibility for the GeneratePress Global Color Palette.
- * Version:           0.2.5
+ * Version:           0.2.6
  * Primary Branch:    main
  * GitHub Plugin URI: weavedigitalstudio/GeneratePress-BB-Color-Palettes
  * Author:            Weave Digital Studio
@@ -131,7 +131,7 @@ function enqueue_scripts(): void {
             'generatepress-color-picker',
             plugin_dir_url( __FILE__ ) . 'js/gp-color-picker.js',
             [ 'wp-color-picker' ],
-            '0.2.4', // Use plugin version for cache busting
+            '0.2.6', // Use plugin version for cache busting
             true
         );
 
