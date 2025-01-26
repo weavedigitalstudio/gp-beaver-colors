@@ -143,7 +143,7 @@ function enqueue_scripts(): void
 			"generatepress-color-picker",
 			plugin_dir_url(__FILE__) . "js/gp-color-picker.js",
 			["wp-color-picker"],
-			"0.2.9", // Use plugin version for cache busting
+			"0.3.0", // Use plugin version for cache busting
 			true
 		);
 
