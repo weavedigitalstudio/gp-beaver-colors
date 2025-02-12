@@ -72,7 +72,7 @@ For more information about removing global inline styles, see:
 
 ## Changelog
 
-### 0.4.0
+### 0.4.1
 
 - Added color grid shortcode for displaying color palettes in style guides
 - Updated plugin name for clarity
