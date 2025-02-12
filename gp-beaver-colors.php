@@ -3,7 +3,7 @@
  * Plugin Name:       GP Beaver Colors
  * Plugin URI:        https://github.com/weavedigitalstudio/gp-beaver-colors
  * Description:       Integrates GeneratePress Global Colors with Beaver Builder's color picker for consistent branding.
- * Version:           0.4.0
+ * Version:           0.4.1
  * Primary Branch:    main
  * GitHub Plugin URI: weavedigitalstudio/gp-beaver-colors
  * Author:           Weave Digital Studio
@@ -106,7 +106,7 @@ function gpbc_enqueue_admin_scripts()
 			"gpbc-color-picker",
 			plugin_dir_url(__FILE__) . "js/color-picker.js",
 			["wp-color-picker"],
-			"0.4.0",
+			"0.4.1",
 			true
 		);
 
