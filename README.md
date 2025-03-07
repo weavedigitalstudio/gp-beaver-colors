@@ -1,3 +1,5 @@
+![Weave Cache Purge Helper](https://weave-hk-github.b-cdn.net/weave/plugin-header.png)
+
 # GP Beaver Colors
 
 This plugin integrates GeneratePress's Global Color Palette with Beaver Builder, allowing you to maintain consistent branding across your website when WordPress Global Styles are disabled.
