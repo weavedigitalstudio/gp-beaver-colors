@@ -34,25 +34,24 @@ This creates a responsive grid showing all your GeneratePress Global Colors with
 
 ---
 
-## Installation from GitHub
+## Plugin Installation  
 
-When installing this plugin from GitHub:
+### Manual Installation  
+1. Download the latest `.zip` file from the [Releases Page](https://github.com/weavedigitalstudio/gp-beaver-colors/releases).  
+2. Go to **Plugins > Add New > Upload Plugin**.  
+3. Upload the zip file, install, and activate!  
 
-1. Go to the [Releases](https://github.com/weavedigitalstudio/gp-beaver-colors/releases) page
-2. Download the latest release ZIP file
-3. Extract the ZIP file on your computer
-4. Rename the extracted folder to remove the version number
-   (e.g., from `gp-beaver-colors-0.3.0` to `gp-beaver-colors`)
-5. Create a new ZIP file from the renamed folder
-6. In your WordPress admin panel, go to Plugins → Add New → Upload Plugin
-7. Upload your new ZIP file and activate the plugin
-8. Plugin should then auto-update moving forward if there are any changes.
+### Auto-Updater via GitHub  
+This plugin supports automatic updates directly from GitHub using a custom updater. To ensure updates work:  
+1.  Keep the plugin installed in `wp-content/plugins/gp-beaver-colors`.  
+2. When a new release is available, the WordPress updater will notify you.  
+3. Click **Update Now** in the Plugins page to install the latest version.
 
-**Note**: The folder renaming step is necessary for WordPress to properly handle plugin updates and functionality.
+---
 
 ## Requirements
 
-- GeneratePress theme
+- GeneratePress theme / child theme
 - Beaver Builder plugin
 - WordPress Global Styles disabled (recommended for performance)
 
@@ -70,16 +69,20 @@ function remove_global_styles()
 For more information about removing global inline styles, see:
 [https://perfmatters.io/docs/remove-global-inline-styles-wordpress/](https://perfmatters.io/docs/remove-global-inline-styles-wordpress/)
 
+---
+
 ## Changelog
 
-### 0.4.2
+### 0.5.0
+- Implemented automatic GitHub updates for the plugin.
+- Now updates are detected via GitHub releases, allowing seamless plugin updates in WordPress.
 
+### 0.4.2
 - Added color grid shortcode for displaying color palettes in style guides
 - Updated plugin name for clarity
 - Improved code organization and inline documentation
 - Enhanced compatibility checks
 
 ### 0.3.0
-
 - Minified CSS output for better performance
 - Removed unnecessary comments and whitespace in generated styles
